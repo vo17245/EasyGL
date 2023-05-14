@@ -14,8 +14,9 @@ private:
 };
 
 
-//app log
+//log
 
 #define INFO(...) Log::Get().GetLogger()->info(__VA_ARGS__)
 #define ERROR(...) Log::Get().GetLogger()->error(__VA_ARGS__)
 #define DEBUG(...) Log::Get().GetLogger()->debug(__VA_ARGS__)
+

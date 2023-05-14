@@ -16,7 +16,7 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/EasyGL
   OBJDIR = bin-int/Debug
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -Isrc -Isrc/EasyGL -Isrc/EasyGL/render -Isrc/EasyGL/vendor
+  INCLUDES += -Isrc -Isrc/EasyGL -Isrc/EasyGL/render -Ivendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS)
@@ -43,7 +43,7 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/EasyGL
   OBJDIR = bin-int/Release
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -Isrc -Isrc/EasyGL -Isrc/EasyGL/render -Isrc/EasyGL/vendor
+  INCLUDES += -Isrc -Isrc/EasyGL -Isrc/EasyGL/render -Ivendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -67,7 +67,15 @@ endif
 OBJECTS := \
 	$(OBJDIR)/Application.o \
 	$(OBJDIR)/Buffer.o \
+	$(OBJDIR)/EnterPoint.o \
+	$(OBJDIR)/Image.o \
 	$(OBJDIR)/Log.o \
+	$(OBJDIR)/Window.o \
+	$(OBJDIR)/Event.o \
+	$(OBJDIR)/KeyEvent.o \
+	$(OBJDIR)/Keycode.o \
+	$(OBJDIR)/MouseButton.o \
+	$(OBJDIR)/MouseButtonEvent.o \
 	$(OBJDIR)/Camera.o \
 	$(OBJDIR)/GLCall.o \
 	$(OBJDIR)/IndexBuffer.o \
@@ -139,7 +147,31 @@ $(OBJDIR)/Application.o: src/EasyGL/Application.cpp
 $(OBJDIR)/Buffer.o: src/EasyGL/Buffer.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/EnterPoint.o: src/EasyGL/EnterPoint.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/Image.o: src/EasyGL/Image.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/Log.o: src/EasyGL/Log.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/Window.o: src/EasyGL/Window.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/Event.o: src/EasyGL/event/Event.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/KeyEvent.o: src/EasyGL/event/KeyEvent.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/Keycode.o: src/EasyGL/event/Keycode.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/MouseButton.o: src/EasyGL/event/MouseButton.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/MouseButtonEvent.o: src/EasyGL/event/MouseButtonEvent.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/Camera.o: src/EasyGL/render/Camera.cpp

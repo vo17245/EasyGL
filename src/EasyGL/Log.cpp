@@ -7,7 +7,7 @@ Log& Log::Get()
 }
 Log::Log()
 {
-	spdlog::set_pattern("%^[%T] %n: %v%$");
+	spdlog::set_pattern("%^[%T] [%n] %v%$");
 	m_Logger = spdlog::stdout_color_mt("EasyGL");
 	m_Logger->set_level(spdlog::level::debug);
 }

@@ -12,7 +12,7 @@ project "EasyGL"
         "src",
         "src/EasyGL",
         "src/EasyGL/render",
-        "src/EasyGL/vendor"
+        "vendor"
     }
     
     links { "glfw3","GL","GLEW", "X11" ,"pthread","xcb", "Xau", "Xdmcp" }

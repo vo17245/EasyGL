@@ -13,7 +13,7 @@ private:
 public:
 	Renderer();
 	~Renderer();
-	static void Init();
+	static void InitGLEW();
 	static void Draw(const VertexArray& va,const IndexBuffer& ib,const Shader& shader);
 	static void ClearColor(float r, float g, float b, float a);
 	static void EnableDepthTest();
