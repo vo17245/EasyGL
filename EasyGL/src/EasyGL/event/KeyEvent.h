@@ -11,6 +11,7 @@ public:
         :Event(type),m_KeyCode(code){}
     virtual ~KeyEvent(){}
     virtual const std::string ToString()const;
+    inline const KeyCode GetKeyCode()const{return m_KeyCode;}
 };
 
 class KeyPressEvent:public KeyEvent

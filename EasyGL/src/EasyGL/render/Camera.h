@@ -14,4 +14,7 @@ public:
     Camera& operator=(const Camera& right);
     inline const Eigen::Matrix4<float>& GetView()const{return m_View;}
     void Move(float dx,float dy,float dz);
+    void SetPosition(float x,float y,float z);
+    void SetRotation(float angle);
+    void Rotate(float angle);
 };
