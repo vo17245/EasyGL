@@ -2,6 +2,7 @@
 #include "EasyGLDebug.h"
 #include "event/KeyEvent.h"
 #include "event/MouseButtonEvent.h"
+#include "Log.h"
 
 std::unordered_map<GLFWwindow*,void*> Window::s_CallbackArgs;
 std::unordered_map<GLFWwindow*,std::function<void(const Event&,void*)>> Window::s_CallbackFunc;
@@ -109,11 +110,18 @@ void Window::SetEventCallback(std::function<void(const Event&,void*)> func,void*
     
 }
 
-
+static void glfw_error_callback(int error, const char* description)
+{
+    ERROR("[GLFW] Erro {0}: {1}",error, description);
+}
 void Window::InitGLFW()
 {
+    glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
+    {
         ASSERT(false,"failed to init glfw");
+    }
+        
 }
 void Window::SetOnRender(std::function<void(void* args)> func,void* args)
 {
