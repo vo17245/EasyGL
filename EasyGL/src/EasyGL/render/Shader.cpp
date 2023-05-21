@@ -2,8 +2,8 @@
 #include "Shader.h"
 #include "GLCall.h"
 #include <fstream>
-#include "EasyGL/Log.h"
-#include "EasyGL/Buffer.h"
+#include "Log.h"
+#include "Buffer.h"
 #include <iostream>
 
 static Buffer LoadFile(const std::string& filepath)

@@ -1,9 +1,6 @@
 #include "Buffer.h"
 #include <string.h>
 
-//test
-#include "Log.h"
-
 Buffer::Buffer()
 	:m_Data(nullptr),m_Used(0),m_Size(0)
 {

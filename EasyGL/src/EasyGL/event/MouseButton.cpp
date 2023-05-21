@@ -1,5 +1,5 @@
 #include "MouseButton.h"
-#include "EasyGL/EasyGLDebug.h"
+#include "EasyGLDebug.h"
 #include <sstream>
 
 std::string MouseButton2String(const MouseButton& mouseButton)

@@ -1,5 +1,5 @@
 #include "GLCall.h"
-#include "EasyGL/Log.h"
+#include "Log.h"
 
 
 void GLClearError()

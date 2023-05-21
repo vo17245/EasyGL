@@ -1,7 +1,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 #include "ImageLoader.h"
-#include "EasyGL/EasyGLDebug.h"
+#include "EasyGLDebug.h"
 
 unsigned char* ImageLoader::Load(const std::string& path,int& width,int& height,int& channel)
 {

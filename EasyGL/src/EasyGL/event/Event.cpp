@@ -1,5 +1,5 @@
 #include "Event.h"
-#include "EasyGL/EasyGLDebug.h"
+#include "EasyGLDebug.h"
 #include <sstream>
 
 std::string EventType2String(EventType eventType)

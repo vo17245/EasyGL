@@ -1,5 +1,5 @@
 #include "KeyCode.h"
-#include "EasyGL/EasyGLDebug.h"
+#include "EasyGLDebug.h"
 #include <sstream>
 
 

@@ -6,12 +6,13 @@ project "EasyGL"
     language "C++"
     targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
     objdir "bin-int/%{prj.name}/%{cfg.buildcfg}"
-    files {"EasyGL/src/**.cpp","EasyGL/src/**.h"}
+    files {"EasyGL/src/EasyGL/**.cpp","EasyGL/src/EasyGL/**.h"}
     includedirs
     {
         "EasyGL/src",
         "EasyGL/src/EasyGL",
         "EasyGL/src/EasyGL/render",
+        "EasyGL/src/EasyGL/core",
         "EasyGL/vendor"
     }
     

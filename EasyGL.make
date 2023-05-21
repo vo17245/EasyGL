@@ -16,7 +16,7 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/libEasyGL.a
   OBJDIR = bin-int/EasyGL/Debug
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/vendor
+  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/vendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS)
@@ -43,7 +43,7 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/libEasyGL.a
   OBJDIR = bin-int/EasyGL/Release
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/vendor
+  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/vendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -145,16 +145,16 @@ else
 $(OBJECTS): | $(OBJDIR)
 endif
 
-$(OBJDIR)/Application.o: EasyGL/src/EasyGL/Application.cpp
+$(OBJDIR)/Application.o: EasyGL/src/EasyGL/core/Application.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/Buffer.o: EasyGL/src/EasyGL/Buffer.cpp
+$(OBJDIR)/Buffer.o: EasyGL/src/EasyGL/core/Buffer.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/Log.o: EasyGL/src/EasyGL/Log.cpp
+$(OBJDIR)/Log.o: EasyGL/src/EasyGL/core/Log.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/Window.o: EasyGL/src/EasyGL/Window.cpp
+$(OBJDIR)/Window.o: EasyGL/src/EasyGL/core/Window.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/Event.o: EasyGL/src/EasyGL/event/Event.cpp

@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include "GLCall.h"
-#include "EasyGL/Log.h"
+#include "Log.h"
 #include "EasyGLDebug.h"
 
 Camera Renderer::s_Camera;

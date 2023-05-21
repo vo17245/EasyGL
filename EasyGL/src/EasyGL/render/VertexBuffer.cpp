@@ -1,5 +1,5 @@
 
-#include "EasyGL/Log.h"
+#include "Log.h"
 #include "VertexBuffer.h"
 #include "GLCall.h"
 
