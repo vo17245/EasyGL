@@ -34,9 +34,8 @@ project "Sandbox"
     includedirs
     {
         "EasyGL/src",
+        "EasyGL/vendor",
         "EasyGL/src/EasyGL",
-        "EasyGL/src/EasyGL/render",
-        "EasyGL/vendor"
     }
     
     libdirs { "bin/EasyGL/Debug" }

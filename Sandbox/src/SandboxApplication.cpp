@@ -1,19 +1,7 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <EasyGL.h>
 #include <iostream>
-#include <VertexBuffer.h>
-#include <VertexArray.h>
-#include <VertexBufferLayout.h>
-#include <IndexBuffer.h>
 #include <memory>
-#include <Shader.h>
-#include <Renderer.h>
-#include "Log.h"
-#include "EasyGLDebug.h"
-#include "Window.h"
-#include "event/KeyEvent.h"
-#include "event/MouseButtonEvent.h"
-#include "Application.h"
+#include "Sandbox.h"
 
 
 
@@ -115,7 +103,6 @@ public:
                 {
                     args.angle+=0.1;
                 }
-
             }
         },
         &args);
@@ -137,7 +124,7 @@ public:
 Application* CreateApplication(); 
 Application* CreateApplication()
 {
-    return new MoveWithTriangle();
+    return new Sandbox();
 }
 int main(void)
 {   

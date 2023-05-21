@@ -20,6 +20,12 @@ Window::Window(size_t width,size_t height,const std::string& title)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     /* Make the window's context current */
     glfwMakeContextCurrent(m_Window);
+    SetOnRender([](void* args){},nullptr);
+    SetEventCallback([](const Event& event,void* args){},nullptr);
+    glfwSetKeyCallback(m_Window, key_callback);
+    glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
+
+    
 }
 
 Window::~Window()
@@ -100,8 +106,7 @@ void Window::SetEventCallback(std::function<void(const Event&,void*)> func,void*
 {
     s_CallbackArgs[m_Window]=args;
     s_CallbackFunc[m_Window]=func;
-    glfwSetKeyCallback(m_Window, key_callback);
-    glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
+    
 }
 
 

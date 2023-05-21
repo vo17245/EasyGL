@@ -1,4 +1,4 @@
-#include "platform/opengl/OpenGLCommand.h"
+#pragma once
 enum class RendererCommandPlatform
 {
     OPENGL

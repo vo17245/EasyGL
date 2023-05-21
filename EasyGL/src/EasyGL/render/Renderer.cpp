@@ -26,23 +26,23 @@ void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& 
 	va.Bind();
 	ib.Bind();
 	shader.Bind();
-	glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr);
+	GLCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
 void Renderer::ClearColor(float r, float g, float b, float a)
 {
-	glClearColor(r, g, b, a);
+	GLCall(glClearColor(r, g, b, a));
 }
 void Renderer::EnableDepthTest()
 {
-	glEnable(GL_DEPTH_TEST);
+	GLCall(glEnable(GL_DEPTH_TEST));
 }
 void Renderer::ClearDepthBuffer()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 }
 void Renderer::SetViewPort(float width, float height)
 {
-	glViewport(0, 0, width, height);
+	GLCall(glViewport(0, 0, width, height));
 }
 
 
