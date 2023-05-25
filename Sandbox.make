@@ -16,7 +16,7 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/Sandbox
   OBJDIR = bin-int/Sandbox/Debug
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -IEasyGL/src -IEasyGL/vendor -IEasyGL/src/EasyGL
+  INCLUDES += -IEasyGL/src -IEasyGL/vendor -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/event
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS)
@@ -43,7 +43,7 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/Sandbox
   OBJDIR = bin-int/Sandbox/Release
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -IEasyGL/src -IEasyGL/vendor -IEasyGL/src/EasyGL
+  INCLUDES += -IEasyGL/src -IEasyGL/vendor -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/event
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   LIBS += -lEasyGL -lglfw3 -lGL -lGLEW -lX11 -lpthread -lxcb -lXau -lXdmcp
   LDDEPS +=
-  ALL_LDFLAGS += $(LDFLAGS) -Lbin/EasyGL/Debug -s
+  ALL_LDFLAGS += $(LDFLAGS) -Lbin/EasyGL/Debug -Lbin/EasyGL/Release -s
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef

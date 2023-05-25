@@ -16,12 +16,10 @@ Window::Window(size_t width,size_t height,const std::string& title)
         glfwTerminate();
         ASSERT(false,"glfw failed to create window");
     }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    
     /* Make the window's context current */
     glfwMakeContextCurrent(m_Window);
-    SetOnRender([](void* args){},nullptr);
+    glfwSwapInterval(1); // Enable vsync
     SetEventCallback([](const Event& event,void* args){},nullptr);
     glfwSetKeyCallback(m_Window, key_callback);
     glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
@@ -116,35 +114,20 @@ static void glfw_error_callback(int error, const char* description)
 }
 void Window::InitGLFW()
 {
+    
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
     {
         ASSERT(false,"failed to init glfw");
     }
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         
 }
-void Window::SetOnRender(std::function<void(void* args)> func,void* args)
-{
-    m_OnRender=func;
-    m_OnRenderArgs=args;
-}
-void Window::Loop()
-{
-    while (!glfwWindowShouldClose(m_Window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
- 
-        m_OnRender(m_OnRenderArgs);
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(m_Window);
 
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-    glfwTerminate();
-}
+
 
 void Window::TerminateGLFW()
 {

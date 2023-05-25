@@ -26,8 +26,7 @@ public:
     static void InitGLFW();
     static void TerminateGLFW();
     inline GLFWwindow* GetWindow()const{return m_Window;}
-    void Loop();
-    void SetOnRender(std::function<void(void* args)> func,void* args);
+
 private:
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
     static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);

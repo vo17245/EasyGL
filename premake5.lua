@@ -13,6 +13,7 @@ project "EasyGL"
         "EasyGL/src/EasyGL",
         "EasyGL/src/EasyGL/render",
         "EasyGL/src/EasyGL/core",
+        "EasyGL/src/EasyGL/event",
         "EasyGL/vendor"
     }
     
@@ -37,15 +38,19 @@ project "Sandbox"
         "EasyGL/src",
         "EasyGL/vendor",
         "EasyGL/src/EasyGL",
+        "EasyGL/src/EasyGL/event"
+        
     }
     
     libdirs { "bin/EasyGL/Debug" }
-    links { "bin/EasyGL/Debug/EasyGL","glfw3","GL","GLEW", "X11" ,"pthread","xcb", "Xau", "Xdmcp"}
+    
     
     filter "configurations:Debug"
+        links { "bin/EasyGL/Debug/EasyGL","glfw3","GL","GLEW", "X11" ,"pthread","xcb", "Xau", "Xdmcp"}
         defines {"CONFIG_DEBUG"}
 
         
     filter "configurations:Release"
+        links { "bin/EasyGL/Release/EasyGL","glfw3","GL","GLEW", "X11" ,"pthread","xcb", "Xau", "Xdmcp"}
         defines {"CONFIG_RELEASE"}
         optimize "On"

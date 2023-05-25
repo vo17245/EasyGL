@@ -23,3 +23,7 @@
 #include "EasyGL/image/ImageLoader.h"
 #include "EasyGL/image/JpgImage.h"
 #include "EasyGL/image/PngImage.h"
+// imgui
+#include "EasyGL/imgui/imgui.h"
+#include "EasyGL/imgui/imgui_impl_glfw.h"
+#include "EasyGL/imgui/imgui_impl_opengl3.h"

@@ -1,18 +1,22 @@
+#pragma once
 #include "EasyGL.h"
-#include <memory>
-
-
 class Sandbox:public Application
 {
-public:
+private:
     std::unique_ptr<VertexBuffer> vb;
     std::unique_ptr<VertexBufferLayout> vbl;
     std::unique_ptr<VertexArray> va;
     std::unique_ptr<IndexBuffer> ib;
     std::unique_ptr<Shader> shader;
-    std::unique_ptr<Texture2D> tex; 
+    float dx,dy;
+    float angle;
+    bool show_demo_window;
+    bool show_another_window;
+    ImVec4 clear_color;
 public:
     Sandbox();
-    ~Sandbox();
-    virtual void Run()override;
+    ~Sandbox(){}
+    virtual void OnBegin() override;
+    virtual void OnRender() override;
+    virtual void OnImguiRender() override;
 };

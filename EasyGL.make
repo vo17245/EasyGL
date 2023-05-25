@@ -16,7 +16,7 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/libEasyGL.a
   OBJDIR = bin-int/EasyGL/Debug
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/vendor
+  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/src/EasyGL/event -IEasyGL/vendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS)
@@ -43,7 +43,7 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/libEasyGL.a
   OBJDIR = bin-int/EasyGL/Release
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/vendor
+  INCLUDES += -IEasyGL/src -IEasyGL/src/EasyGL -IEasyGL/src/EasyGL/render -IEasyGL/src/EasyGL/core -IEasyGL/src/EasyGL/event -IEasyGL/vendor
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -77,6 +77,13 @@ OBJECTS := \
 	$(OBJDIR)/ImageLoader.o \
 	$(OBJDIR)/JpgImage.o \
 	$(OBJDIR)/PngImage.o \
+	$(OBJDIR)/imgui.o \
+	$(OBJDIR)/imgui_demo.o \
+	$(OBJDIR)/imgui_draw.o \
+	$(OBJDIR)/imgui_impl_glfw.o \
+	$(OBJDIR)/imgui_impl_opengl3.o \
+	$(OBJDIR)/imgui_tables.o \
+	$(OBJDIR)/imgui_widgets.o \
 	$(OBJDIR)/OpenGLCommand.o \
 	$(OBJDIR)/Camera.o \
 	$(OBJDIR)/GLCall.o \
@@ -179,6 +186,27 @@ $(OBJDIR)/JpgImage.o: EasyGL/src/EasyGL/image/JpgImage.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/PngImage.o: EasyGL/src/EasyGL/image/PngImage.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui.o: EasyGL/src/EasyGL/imgui/imgui.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_demo.o: EasyGL/src/EasyGL/imgui/imgui_demo.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_draw.o: EasyGL/src/EasyGL/imgui/imgui_draw.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_impl_glfw.o: EasyGL/src/EasyGL/imgui/imgui_impl_glfw.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_impl_opengl3.o: EasyGL/src/EasyGL/imgui/imgui_impl_opengl3.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_tables.o: EasyGL/src/EasyGL/imgui/imgui_tables.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_widgets.o: EasyGL/src/EasyGL/imgui/imgui_widgets.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/OpenGLCommand.o: EasyGL/src/EasyGL/platform/opengl/OpenGLCommand.cpp
