@@ -5,6 +5,9 @@
 #include "EasyGL/imgui/imgui_impl_glfw.h"
 #include "EasyGL/imgui/imgui_impl_opengl3.h"
 
+#include "GLCall.h"
+#include "Log.h"
+
 const char* Application::glsl_version = "#version 330 core";
 void Application::Init()
 {
@@ -41,11 +44,11 @@ Application::Application(size_t width,size_t height,const std::string& title)
 void Application::Run()
 {
     OnBegin();
+    m_Window->SetEventCallback(OnEvent,&m_LayerStack);
     while (!glfwWindowShouldClose(m_Window->GetWindow()))
     {
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
- 
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
         OnUpdate();
         OnRender();
 
@@ -71,3 +74,39 @@ void Application::Run()
     glfwTerminate();
 }
 
+void Application::OnRender()
+{
+    for(auto it : m_LayerStack)
+    {
+        it->OnRender();
+    }
+}
+
+void Application::OnUpdate()
+{
+    for(auto it : m_LayerStack)
+    {
+        it->OnUpdate();
+    }
+}
+
+void Application::OnImguiRender()
+{
+    for(auto it : m_LayerStack)
+    {
+        it->OnImguiRender();
+    }
+}
+
+void Application::OnEvent(const Event& event,void* args)
+{
+    LayerStack& layerStack=*(LayerStack*)args;
+    for(auto it=layerStack.rbegin();it!=layerStack.rend();it++)
+    {
+        if(event.m_IsHandled!=true)
+        {
+            (*it)->OnEvent(event);
+        }
+    }
+
+}

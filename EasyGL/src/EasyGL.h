@@ -1,8 +1,11 @@
 #pragma once
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
+// core
 #include "EasyGL/core/Application.h"
 #include "EasyGL/core/Window.h"
+#include "EasyGL/core/Layer.h"
+#include "EasyGL/core/LayerStack.h"
 // render
 #include "EasyGL/render/Camera.h"
 #include "EasyGL/render/IndexBuffer.h"

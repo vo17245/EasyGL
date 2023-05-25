@@ -4,6 +4,9 @@
 #include <string>
 #include <memory>
 #include "Event.h"
+#include <vector>
+#include "Layer.h"
+#include "LayerStack.h"
 
 class Application
 {
@@ -15,6 +18,7 @@ protected:
     size_t m_Height;
     std::string m_Title;
     std::unique_ptr<Window> m_Window;
+    LayerStack m_LayerStack;
 
 public:
     Application();
@@ -22,9 +26,11 @@ public:
     
     virtual ~Application(){}
     void Run();
-    virtual void OnRender(){}
+    void OnRender();
     virtual void OnBegin(){}
-    virtual void OnUpdate(){}
-    virtual void OnImguiRender(){}
-    inline void SetEventCallback(std::function<void(const Event&,void*)> func,void* args)const{m_Window->SetEventCallback(func,args);}
+    void OnUpdate();
+    void OnImguiRender();
+    static void OnEvent(const Event& event,void* args);
+    inline void PushLayer(const std::shared_ptr<Layer> layer){m_LayerStack.Push(layer);}
+    inline void PopLayer(const std::shared_ptr<Layer> layer){m_LayerStack.Pop(layer);}
 };
