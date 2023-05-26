@@ -30,3 +30,5 @@
 #include "EasyGL/imgui/imgui.h"
 #include "EasyGL/imgui/imgui_impl_glfw.h"
 #include "EasyGL/imgui/imgui_impl_opengl3.h"
+// math
+#include "EasyGL/math/Math.h"

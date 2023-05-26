@@ -87,12 +87,12 @@ void Shader::Unbind()const
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)const
 {
     int32_t location = GetLocation(name);
-    glUniform4f(location, v0, v1, v2, v3);
+    GLCall(glUniform4f(location, v0, v1, v2, v3));
 }
 void Shader::SetUniformMat4f(const std::string& name, const Eigen::Matrix4f& mat)const
 {
     int32_t location = GetLocation(name);
-    glUniformMatrix4fv(location, 1, GL_FALSE, mat.data());
+    GLCall(glUniformMatrix4fv(location, 1, GL_FALSE, mat.data()));
 }
 int32_t Shader::GetLocation(const std::string& name)const
 {

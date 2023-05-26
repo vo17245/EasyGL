@@ -3,9 +3,12 @@
 #include "Layer.h"
 #include <memory>
 
+class Application;
+
 class LayerStack
 {
 private:
+	
     std::vector<std::shared_ptr<Layer>> m_Layers;
 public:
     LayerStack(){}

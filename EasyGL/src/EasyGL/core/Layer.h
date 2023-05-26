@@ -1,5 +1,8 @@
 #pragma once
 #include "Event.h"
+
+class Application;
+
 class Layer
 {
 public:

@@ -1,20 +1,20 @@
 #include "TrianglerLayer.h"
 #include <iostream>
-float vertex[24] =
+
+TrianglerLayer::TrianglerLayer()
+    :dx(0),dy(0),angle(0)
+{
+    // init data
+    float vertex[24] =
     {
     	-0.5, -0.5, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0,
     	 0.5, -0.5, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0,
     	 0.0,  0.5, -0.5, 1.0, 0.0, 0.0, 1.0, 1.0
     };
-uint32_t indices[3] =
+    uint32_t indices[3] =
     {
     	0,1,2
-    };
-TrianglerLayer::TrianglerLayer()
-    :dx(0),dy(0),angle(0)
-{
-    // init data
-    
+    };   
     vb = std::unique_ptr<VertexBuffer>(new VertexBuffer(vertex, 24 * sizeof(float)));
     vbl = std::unique_ptr<VertexBufferLayout>(new VertexBufferLayout());
     vbl->Push<float>(4);
@@ -23,7 +23,7 @@ TrianglerLayer::TrianglerLayer()
     va->AddBuffer(*vb, *vbl);
     
     ib = std::make_unique<IndexBuffer>(indices,3);
-    shader = std::unique_ptr<Shader>(new Shader("res/shader/base_vs.shader", "res/shader/base_fs.shader"));
+    shader = std::unique_ptr<Shader>(new Shader("Sandbox/res/shader/base_vs.shader", "Sandbox/res/shader/base_fs.shader"));
 }
 
 TrianglerLayer::~TrianglerLayer()

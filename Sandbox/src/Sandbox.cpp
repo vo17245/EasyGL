@@ -1,10 +1,13 @@
 #include "Sandbox.h"
 #include "TestLayer/TrianglerLayer.h"
+#include "TestLayer/ImageLayer.h"
 
 Sandbox::Sandbox()
 {
-    std::shared_ptr<TrianglerLayer> trianglerLayer(new TrianglerLayer());
-    PushLayer(trianglerLayer);
+    //std::shared_ptr<TrianglerLayer> trianglerLayer(new TrianglerLayer());
+    //PushLayer(trianglerLayer);
+    std::shared_ptr<ImageLayer> imageLayer(new ImageLayer());
+    PushLayer(imageLayer);
 }
 void Sandbox::OnBegin() 
 {
