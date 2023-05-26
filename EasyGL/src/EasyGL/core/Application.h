@@ -31,6 +31,7 @@ public:
     void OnUpdate();
     void OnImguiRender();
     static void OnEvent(const Event& event,void* args);
-    inline void PushLayer(const std::shared_ptr<Layer> layer){m_LayerStack.Push(layer);}
-    inline void PopLayer(const std::shared_ptr<Layer> layer){m_LayerStack.Pop(layer);}
+    inline void PushLayer(const std::shared_ptr<Layer>& layer){m_LayerStack.Push(layer);}
+    inline void PopLayer(const std::shared_ptr<Layer>& layer){m_LayerStack.Pop(layer);}
+    inline void PopLayer(){m_LayerStack.Pop();}
 };

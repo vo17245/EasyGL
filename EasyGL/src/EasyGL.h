@@ -6,6 +6,7 @@
 #include "EasyGL/core/Window.h"
 #include "EasyGL/core/Layer.h"
 #include "EasyGL/core/LayerStack.h"
+#include "EasyGL/core/Log.h"
 // render
 #include "EasyGL/render/Camera.h"
 #include "EasyGL/render/IndexBuffer.h"

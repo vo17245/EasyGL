@@ -1,6 +1,6 @@
 
 #include "Shader.h"
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 #include <fstream>
 #include "Log.h"
 #include "Buffer.h"
@@ -67,8 +67,6 @@ Shader::Shader(const std::string& vertexshader_filepath, const std::string& frag
     vs.Push(1,&end);
     Buffer fs = LoadFile(fragmentshader_filepath);
     fs.Push(1, &end);
-    DEBUG("{0}:\n{1}", vertexshader_filepath, vs.GetData());
-    DEBUG("{0}:\n{1}", fragmentshader_filepath, fs.GetData());
     m_RendererID = CreateShader(vs, fs);
     Bind();
 }

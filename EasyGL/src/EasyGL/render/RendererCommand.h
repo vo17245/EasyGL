@@ -1,4 +1,5 @@
 #pragma once
+#include "platform/renderer/RendererApi.h"
 enum class RendererCommandPlatform
 {
     OPENGL
@@ -6,7 +7,8 @@ enum class RendererCommandPlatform
 class RendererCommand
 {
 private:
-    static RendererCommand* s_Instance;
+    static RendererApi* s_RendererApi;
 public:
     static void SetPlatform(RendererCommandPlatform platform);
+    static void BindShader(uint32_t rendererId);
 };

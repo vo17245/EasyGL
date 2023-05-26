@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 #include "Log.h"
 #include "EasyGLDebug.h"
 
@@ -57,6 +57,7 @@ void Renderer::EndScene()
 
 void Renderer::Submit(const VertexArray& va,const IndexBuffer& ib,const Shader& shader)
 {
+	shader.Bind();
     shader.SetUniformMat4f("u_View",s_Camera.GetView());
     Draw(va,ib,shader);
 }

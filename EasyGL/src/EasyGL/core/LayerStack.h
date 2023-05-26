@@ -15,6 +15,7 @@ public:
     ~LayerStack();
     void Push(const std::shared_ptr<Layer>& layer);
     void Pop(const std::shared_ptr<Layer>& layer);
+	void Pop();
 
     std::vector<std::shared_ptr<Layer>>::iterator begin() { return m_Layers.begin(); }
 	std::vector<std::shared_ptr<Layer>>::iterator end() { return m_Layers.end(); }

@@ -1,7 +1,7 @@
 
 #include "Log.h"
 #include "VertexBuffer.h"
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 
 VertexBuffer::VertexBuffer(void* buffer, size_t size)
 {

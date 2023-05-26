@@ -5,10 +5,11 @@
 #include "EasyGL/imgui/imgui_impl_glfw.h"
 #include "EasyGL/imgui/imgui_impl_opengl3.h"
 
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 #include "Log.h"
 
-const char* Application::glsl_version = "#version 330 core";
+
+const char* Application::glsl_version = "#version 330 core";//imgui glsl_version
 void Application::Init()
 {
     // init glfw 
@@ -76,7 +77,7 @@ void Application::Run()
 
 void Application::OnRender()
 {
-    for(auto it : m_LayerStack)
+    for(auto& it : m_LayerStack)
     {
         it->OnRender();
     }
@@ -84,7 +85,7 @@ void Application::OnRender()
 
 void Application::OnUpdate()
 {
-    for(auto it : m_LayerStack)
+    for(auto& it : m_LayerStack)
     {
         it->OnUpdate();
     }
@@ -92,7 +93,7 @@ void Application::OnUpdate()
 
 void Application::OnImguiRender()
 {
-    for(auto it : m_LayerStack)
+    for(auto& it : m_LayerStack)
     {
         it->OnImguiRender();
     }

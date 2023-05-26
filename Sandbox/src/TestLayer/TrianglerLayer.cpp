@@ -42,13 +42,7 @@ void TrianglerLayer::OnRender()
 }
 
 
-void TrianglerLayer::OnImguiRender()
-{
-    static bool isClose;
-    ImGui::Begin("imgui",&isClose);
-    ImGui::Text("This is some useful text.");   
-    ImGui::End();
-}
+
 
 
 void TrianglerLayer::OnEvent(const Event& event)

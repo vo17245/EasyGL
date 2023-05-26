@@ -18,6 +18,12 @@ void LayerStack::Pop(const std::shared_ptr<Layer>& layer)
     }
 }
 
+void LayerStack::Pop()
+{
+    m_Layers[m_Layers.size()-1]->OnDetach();
+    m_Layers.pop_back();
+}
+
 LayerStack::~LayerStack()
 {
     for(auto it:m_Layers)

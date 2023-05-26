@@ -1,5 +1,5 @@
 #include "VertexArray.h"
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 
 VertexArray::VertexArray()
 {

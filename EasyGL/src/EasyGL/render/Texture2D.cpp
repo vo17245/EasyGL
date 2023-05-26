@@ -1,6 +1,6 @@
 #include "image/ImageLoader.h"
 #include "Texture2D.h"
-#include "GLCall.h"
+#include "platform/renderer/opengl/GLCall.h"
 #include "EasyGLDebug.h"
 
 
