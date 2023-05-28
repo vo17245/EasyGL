@@ -8,4 +8,5 @@ public:
     OpenGLApi(){}
     ~OpenGLApi(){}
     void BindShader(uint32_t rendererID);
+    void SetViewport(int x,int y,size_t width,size_t height)override;
 };

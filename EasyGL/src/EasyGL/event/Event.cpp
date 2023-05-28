@@ -21,6 +21,12 @@ std::string EventType2String(EventType eventType)
     case EventType::KEY_REPEAT :  
         return "KEY_REPEAT";
         break;
+    case EventType::WINDOW_FILE_DROP :
+        return "WINDOW_FILE_DROP";
+        break;
+    case EventType::WINDOW_RESIZE :
+        return "WINDOW_RESIZE";
+        break;
     default:
         std::stringstream ss;
         ss<<"unknown EventType "<<static_cast<uint32_t>(eventType);

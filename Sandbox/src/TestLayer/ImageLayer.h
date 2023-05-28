@@ -21,4 +21,5 @@ public:
     ~ImageLayer();
     void OnRender()override;
     void OnImguiRender()override;
+    void OnEvent(const Event& event)override;
 };

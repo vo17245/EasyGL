@@ -20,3 +20,8 @@ void RendererCommand::BindShader(uint32_t rendererId)
 {
     s_RendererApi->BindShader(rendererId);
 }
+
+void RendererCommand::SetViewport(int x,int y,size_t width,size_t height)
+{
+    s_RendererApi->SetViewport(x,y,width,height);
+}

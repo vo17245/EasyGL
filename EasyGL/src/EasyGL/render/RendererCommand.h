@@ -11,4 +11,5 @@ private:
 public:
     static void SetPlatform(RendererCommandPlatform platform);
     static void BindShader(uint32_t rendererId);
+    static void SetViewport(int x,int y,size_t width,size_t height);
 };

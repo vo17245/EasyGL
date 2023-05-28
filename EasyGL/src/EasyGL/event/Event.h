@@ -8,7 +8,9 @@ enum class EventType:uint32_t
     KEY_RELEASE=Bit(1),
     MOUSE_BUTTON_PRESS=Bit(2),
     MOUSE_BUTTON_RELEASE=Bit(3),
-    KEY_REPEAT=Bit(4)
+    KEY_REPEAT=Bit(4),
+    WINDOW_FILE_DROP=Bit(5),
+    WINDOW_RESIZE=Bit(6)
 };
 std::string EventType2String(EventType eventType);
 class Event

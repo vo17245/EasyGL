@@ -3,6 +3,7 @@
 #include "event/KeyEvent.h"
 #include "event/MouseButtonEvent.h"
 #include "Log.h"
+#include "event/WindowEvent.h"
 
 std::unordered_map<GLFWwindow*,void*> Window::s_CallbackArgs;
 std::unordered_map<GLFWwindow*,std::function<void(const Event&,void*)>> Window::s_CallbackFunc;
@@ -23,8 +24,8 @@ Window::Window(size_t width,size_t height,const std::string& title)
     SetEventCallback([](const Event& event,void* args){},nullptr);
     glfwSetKeyCallback(m_Window, key_callback);
     glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
-
-    
+    glfwSetDropCallback(m_Window, drop_callback);
+    glfwSetWindowSizeCallback(m_Window, window_size_callback);
 }
 
 Window::~Window()
@@ -132,4 +133,22 @@ void Window::InitGLFW()
 void Window::TerminateGLFW()
 {
     glfwTerminate();
+}
+
+void Window::drop_callback(GLFWwindow* window, int count, const char** paths)
+{
+    
+    void* args=s_CallbackArgs[window];
+    std::function<void(const Event&,void*)> func=s_CallbackFunc[window];
+    WindowFileDropEvent event(static_cast<size_t>(count),paths);
+    func(event,args);
+}
+
+void Window::window_size_callback(GLFWwindow* window, int width, int height)
+{
+    void* args=s_CallbackArgs[window];
+    std::function<void(const Event&,void*)> func=s_CallbackFunc[window];
+    WindowResizeEvent event(static_cast<size_t>(width),static_cast<size_t>(height));
+    func(event,args);
+
 }

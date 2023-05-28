@@ -23,6 +23,7 @@
 #include "EasyGL/event/KeyEvent.h"
 #include "EasyGL/event/MouseButton.h"
 #include "EasyGL/event/MouseButtonEvent.h"
+#include "EasyGL/event/WindowEvent.h"
 // image
 #include "EasyGL/image/ImageLoader.h"
 #include "EasyGL/image/JpgImage.h"

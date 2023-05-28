@@ -63,3 +63,12 @@ void ImageLayer::OnImguiRender()
     ImGui::SliderFloat("y", &m_Height, 0.0f, 1.0f);
     ImGui::End();
 }
+
+void ImageLayer::OnEvent(const Event& event)
+{
+    if(event.IsOnCategory(EventType::WINDOW_RESIZE))
+    {
+        WindowResizeEvent windowResizeEvent=*(WindowResizeEvent*)&event;
+        RendererCommand::SetViewport(0,0,windowResizeEvent.GetWidth(),windowResizeEvent.GetHeight());
+    }
+}
