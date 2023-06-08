@@ -8,9 +8,9 @@ public:
 	DngImage(const std::string& path);
     DngImage(const char* data,size_t size);
 	DngImage(DngImage&& dng);
-	DngImage(const DngImage& dng)=delete;
-	DngImage& operator=(const DngImage& dng)=delete;
-	DngImage& operator=(DngImage&& dng)=delete;
+	DngImage(const DngImage& dng);
+	DngImage& operator=(const DngImage& dng);
+	DngImage& operator=(DngImage&& dng);
 	~DngImage(){}
 	inline int GetWidth()const { return m_Width; }
 	inline int GetHeight()const { return m_Height; }

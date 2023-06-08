@@ -17,3 +17,31 @@ DngImage::DngImage(DngImage&& dng)
     m_BitsPerPixel(dng.m_BitsPerPixel),
     m_Pattern(dng.m_Pattern),
     m_Data(std::move(dng.m_Data)){}
+
+
+DngImage& DngImage::operator=(DngImage&& dng)
+{
+    m_Width=dng.m_Width;
+    m_Height=dng.m_Height;
+    m_BitsPerPixel=dng.m_BitsPerPixel;
+    m_Pattern=dng.m_Pattern;
+    m_Data=std::move(dng.m_Data);
+    return *this;
+}
+
+DngImage::DngImage(const DngImage& dng)
+    :m_Width(dng.m_Width),
+    m_Height(dng.m_Height),
+    m_BitsPerPixel(dng.m_BitsPerPixel),
+    m_Pattern(dng.m_Pattern),
+    m_Data(dng.m_Data){}
+
+DngImage& DngImage::operator=(const DngImage& dng)
+{
+    m_Width=dng.m_Width;
+    m_Height=dng.m_Height;
+    m_BitsPerPixel=dng.m_BitsPerPixel;
+    m_Pattern=dng.m_Pattern;
+    m_Data=dng.m_Data;
+    return *this;
+}
