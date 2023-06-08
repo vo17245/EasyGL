@@ -13,7 +13,7 @@ public:
     JpgImage(const JpgImage& jpg);
     JpgImage& operator=(JpgImage&& jpg);
     JpgImage& operator=(const JpgImage& jpg);
-
+    JpgImage(size_t width,size_t height,size_t channel);
     JpgImage(const std::string& path);
     ~JpgImage();
     inline const unsigned char* GetData()const{return m_Data;}

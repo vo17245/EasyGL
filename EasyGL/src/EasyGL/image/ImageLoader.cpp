@@ -69,7 +69,9 @@ std::vector<unsigned char> ImageLoader::LoadDngFromMemory(const char* rawData,si
     }
     else
     {
-        ASSERT(false,"unknown dng pattern");
+        std::stringstream ss;
+        ss<<"unknown dng pattern "<<image.cfa_pattern[0][0]<<" "<<image.cfa_pattern[0][1]<<" "<<image.cfa_pattern[1][0]<<" "<<image.cfa_pattern[1][1];
+        ASSERT(false,ss.str());
     }
     return data;
 }

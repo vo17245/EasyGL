@@ -5,6 +5,7 @@
 class DngImage
 {
 public:
+	DngImage(){}
 	DngImage(const std::string& path);
     DngImage(const char* data,size_t size);
 	DngImage(DngImage&& dng);

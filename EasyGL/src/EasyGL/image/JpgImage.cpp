@@ -55,3 +55,9 @@ JpgImage& JpgImage::operator=(const JpgImage& jpg)
     memcpy(m_Data,jpg.GetData(),dataSize);
     return *this;
 }
+
+JpgImage::JpgImage(size_t width,size_t height,size_t channel)
+    :m_Width(width),m_Height(height),m_Channel(channel)
+{
+    m_Data=new unsigned char[width*height*channel];
+}
