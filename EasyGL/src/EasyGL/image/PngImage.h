@@ -8,7 +8,7 @@ private:
     int m_Channel;
     unsigned char* m_Data;
 public:
-    PngImage(PngImage&& img)=delete;
+    PngImage(PngImage&& img);
     PngImage(const PngImage& img)=delete;
     PngImage& operator=(PngImage&& img)=delete;
     PngImage& operator=(const PngImage& img)=delete;

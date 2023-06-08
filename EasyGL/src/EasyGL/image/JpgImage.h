@@ -9,7 +9,7 @@ private:
     int m_Channel;
     unsigned char* m_Data;
 public:
-    JpgImage(JpgImage&& img)=delete;
+    JpgImage(JpgImage&& img);
     JpgImage(const JpgImage& img)=delete;
     JpgImage& operator=(JpgImage&& img)=delete;
     JpgImage& operator=(const JpgImage& img)=delete;

@@ -8,5 +8,15 @@ JpgImage::JpgImage(const std::string& path)
 
 JpgImage::~JpgImage()
 {
-    ImageLoader::Free(m_Data);
+    if(m_Data!=nullptr)
+        ImageLoader::Free(m_Data);
+}
+
+JpgImage::JpgImage(JpgImage&& jpg)
+    :m_Width(jpg.m_Width),
+    m_Height(jpg.m_Height),
+    m_Channel(jpg.m_Channel),
+    m_Data(jpg.m_Data)
+{
+    jpg.m_Data=nullptr;
 }
