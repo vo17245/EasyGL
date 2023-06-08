@@ -38,7 +38,7 @@ Texture2D::Texture2D(const JpgImage& jpg)
     GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR));
     GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
     // upload image to gpu
-    GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, jpg.GetWidth(), jpg.GetHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, jpg.GetDate()));
+    GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, jpg.GetWidth(), jpg.GetHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, jpg.GetData()));
     GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 }
 

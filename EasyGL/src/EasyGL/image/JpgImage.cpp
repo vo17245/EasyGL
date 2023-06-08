@@ -41,6 +41,7 @@ JpgImage& JpgImage::operator=(JpgImage&& jpg)
     m_Channel=jpg.m_Channel;
     m_Data=jpg.GetData();
     jpg.m_Data=nullptr;
+    return *this;
 }
 JpgImage& JpgImage::operator=(const JpgImage& jpg)
 {
@@ -52,4 +53,5 @@ JpgImage& JpgImage::operator=(const JpgImage& jpg)
     size_t dataSize=jpg.GetDataSize();
     m_Data=new unsigned char[dataSize];
     memcpy(m_Data,jpg.GetData(),dataSize);
+    return *this;
 }

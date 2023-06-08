@@ -28,6 +28,7 @@
 #include "EasyGL/image/ImageLoader.h"
 #include "EasyGL/image/JpgImage.h"
 #include "EasyGL/image/PngImage.h"
+#include "EasyGL/image/DngImage.h"
 // imgui
 #include "EasyGL/imgui/imgui.h"
 #include "EasyGL/imgui/imgui_impl_glfw.h"
