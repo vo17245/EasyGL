@@ -1,15 +1,21 @@
 #include "PngImage.h"
 #include "ImageLoader.h"
+#include <string.h>
 
 PngImage::PngImage(const std::string& path)
 {
-    m_Data=ImageLoader::Load(path,m_Width,m_Height,m_Channel);
+
+    unsigned char* p=ImageLoader::Load(path,m_Width,m_Height,m_Channel);
+    size_t size=m_Width*m_Height*m_Channel;
+    m_Data=new unsigned char[size];
+    memcpy(m_Data,p,size);
+    ImageLoader::Free(p);
 }
 
 PngImage::~PngImage()
 {
     if(m_Data!=nullptr)
-        ImageLoader::Free(m_Data);
+        delete m_Data;
 }
 
 PngImage::PngImage(PngImage&& img)

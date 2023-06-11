@@ -9,6 +9,24 @@
 #include <tinydng/tiny_dng_loader.h>
 #include "Log.h"
 
+static DngPattern GetDngPattern(int a,int b,int c,int d)
+{
+    if(a==0&&b==1&&c==1&&d==2)
+    {
+        return DngPattern::RGGB;
+    }
+    else if(a==2&&b==1&&c==1&&d==0)
+    {
+        return DngPattern::BGGR;
+    }
+    else
+    {
+        std::stringstream ss;
+        ss<<"unknown dng pattern "<<a<<" "<<b<<" "<<c<<" "<<d;
+        ASSERT(false,ss.str());
+    }
+}
+
 unsigned char* ImageLoader::Load(const std::string& path,int& width,int& height,int& channel)
 {
     stbi_set_flip_vertically_on_load(true);
@@ -38,14 +56,7 @@ std::vector<unsigned char> ImageLoader::LoadDng(const std::string& path,int& wid
     height = image.height;
     bitsPerPixel = image.bits_per_sample;
     std::vector<unsigned char> data = std::move(image.data);
-    if(image.cfa_pattern[0][0]==0&&image.cfa_pattern[0][1]==1&&image.cfa_pattern[1][0]==1&&image.cfa_pattern[1][1]==2)
-    {
-        pattern=DngPattern::RGGB;
-    }
-    else
-    {
-        ASSERT(false,"unknown dng pattern");
-    }
+    pattern=GetDngPattern(image.cfa_pattern[0][0],image.cfa_pattern[0][1],image.cfa_pattern[1][0],image.cfa_pattern[1][1]);
     return data;
 }
 
@@ -63,15 +74,6 @@ std::vector<unsigned char> ImageLoader::LoadDngFromMemory(const char* rawData,si
     height = image.height;
     bitsPerPixel = image.bits_per_sample;
     std::vector<unsigned char> data = std::move(image.data);
-    if(image.cfa_pattern[0][0]==0&&image.cfa_pattern[0][1]==1&&image.cfa_pattern[1][0]==1&&image.cfa_pattern[1][1]==2)
-    {
-        pattern=DngPattern::RGGB;
-    }
-    else
-    {
-        std::stringstream ss;
-        ss<<"unknown dng pattern "<<image.cfa_pattern[0][0]<<" "<<image.cfa_pattern[0][1]<<" "<<image.cfa_pattern[1][0]<<" "<<image.cfa_pattern[1][1];
-        ASSERT(false,ss.str());
-    }
+    pattern=GetDngPattern(image.cfa_pattern[0][0],image.cfa_pattern[0][1],image.cfa_pattern[1][0],image.cfa_pattern[1][1]);
     return data;
 }
