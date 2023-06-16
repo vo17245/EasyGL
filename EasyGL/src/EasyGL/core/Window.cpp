@@ -111,7 +111,7 @@ void Window::SetEventCallback(std::function<void(const Event&,void*)> func,void*
 
 static void glfw_error_callback(int error, const char* description)
 {
-    ERROR("[GLFW] Erro {0}: {1}",error, description);
+    EZ_CORE_ERROR("[GLFW] Erro {0}: {1}",error, description);
 }
 void Window::InitGLFW()
 {

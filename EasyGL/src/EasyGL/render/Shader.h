@@ -1,10 +1,12 @@
 #pragma once
 #include "Eigen/Core"
-
+#include <vector>
+#include <unordered_map>
 class Shader
 {
 public:
 	Shader(const std::string& vertexshader_filepath,const std::string& fragmentshader_filepath);
+	Shader(const std::vector<char>& vertexShader,const std::vector<char>& fragmentShader);
 	~Shader();
 	void Bind()const;
 	void Unbind()const;

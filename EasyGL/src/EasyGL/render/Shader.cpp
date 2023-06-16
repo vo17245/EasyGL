@@ -27,6 +27,7 @@ static Buffer LoadFile(const std::string& filepath)
     fclose(fp);
     return buf;
 }
+
 static uint32_t CompileShader(uint32_t type, const Buffer& src)
 {
     GLCall(uint32_t id = glCreateShader(type));
@@ -48,6 +49,39 @@ static uint32_t CompileShader(uint32_t type, const Buffer& src)
     return id;
 }
 static uint32_t CreateShader(const Buffer& vs, const Buffer& fs)
+{
+    int32_t vs_id = CompileShader(GL_VERTEX_SHADER, vs);
+    int32_t fs_id = CompileShader(GL_FRAGMENT_SHADER, fs);
+    uint32_t program_id = glCreateProgram();
+    GLCall(glAttachShader(program_id, vs_id));
+    GLCall(glAttachShader(program_id, fs_id));
+    GLCall(glLinkProgram(program_id));
+    GLCall(glValidateProgram(program_id));
+    GLCall(glDeleteShader(vs_id));
+    GLCall(glDeleteShader(fs_id));
+    return program_id;
+}
+static uint32_t CompileShader(uint32_t type, const std::vector<char>& src)
+{
+    GLCall(uint32_t id = glCreateShader(type));
+    const char* src_data = src.data();
+    GLCall(glShaderSource(id, 1, &src_data, nullptr));
+    GLCall(glCompileShader(id));
+    int result;
+    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+    if (result == GL_FALSE)
+    {
+        int length;
+        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+        char* message = new char[length];
+        
+        glGetShaderInfoLog(id, length, &length, message);
+        ERROR("[OpenGL] {0} Shader Compile Error \n{1}", type==GL_VERTEX_SHADER?"Vertex":"Fragment", message);
+        delete[] message;
+    }
+    return id;
+}
+static uint32_t CreateShader(const std::vector<char>& vs, const std::vector<char>& fs)
 {
     int32_t vs_id = CompileShader(GL_VERTEX_SHADER, vs);
     int32_t fs_id = CompileShader(GL_FRAGMENT_SHADER, fs);
@@ -109,4 +143,10 @@ int32_t Shader::GetLocation(const std::string& name)const
         return location;
     }
     
+}
+
+
+Shader::Shader(const std::vector<char>& vertexShader,const std::vector<char>& fragmentShader)
+{
+    m_RendererID = CreateShader(vertexShader, fragmentShader);
 }

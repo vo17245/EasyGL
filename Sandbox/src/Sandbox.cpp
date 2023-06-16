@@ -3,7 +3,7 @@
 #include "TestLayer/ImageLayer.h"
 #include "TestLayer/TestMenuLayer.h"
 #include "TestLayer/FileDropLayer.h"
-
+#include <iostream>
 Sandbox::Sandbox()
 {
     
@@ -17,6 +17,8 @@ Sandbox::Sandbox()
     // set default layer to show
     std::shared_ptr<ImageLayer> imageLayer(new ImageLayer());
     PushLayer(imageLayer);
+    std::cout << "Sandbox constructor" << std::endl;
+    std::cin.get();
 }
 void Sandbox::OnBegin() 
 {

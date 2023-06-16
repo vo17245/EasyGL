@@ -25,6 +25,7 @@ static DngPattern GetDngPattern(int a,int b,int c,int d)
         ss<<"unknown dng pattern "<<a<<" "<<b<<" "<<c<<" "<<d;
         ASSERT(false,ss.str());
     }
+    return DngPattern::UNKNOWN;
 }
 
 unsigned char* ImageLoader::Load(const std::string& path,int& width,int& height,int& channel)

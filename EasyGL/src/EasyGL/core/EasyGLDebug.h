@@ -8,7 +8,7 @@
     {\
         std::stringstream assert_ss;\
         assert_ss<<"Assert Failed: "<<m<<" in "<<__FILE__<<":"<<__LINE__;\
-        ERROR(assert_ss.str());\
+        EZ_CORE_ERROR(assert_ss.str());\
         exit(-1);\
     }
 #else
